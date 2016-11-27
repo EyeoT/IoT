@@ -1,0 +1,15 @@
+# Ignore everything
+/*
+
+# But not these directories...
+!.gitignore
+!README.md
+!IoT/*
+!libraries/Adafruit_DotStar/*
+!libraries/EyeoT_Header_Files/*
+
+
+# even if they are in subdirectories
+!*/
+
+
