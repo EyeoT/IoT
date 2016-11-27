@@ -3,6 +3,7 @@
 
 # Whitelist anything that's an EyeoT directory or gitignore
 !**.gitignore
+!**.md
 !/libraries/
 !/IoT/
  
