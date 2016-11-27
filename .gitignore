@@ -1,10 +1,10 @@
 # Ignore everything
-/*
+*/*
 
-# even if they are in subdirectories
-*/
+# even files
+*.*
 
-# Ignore all files named .DS_Store or ending with .log
+# Especially ignore all files named .DS_Store or ending with .log
 **/.DS_Store
 **.log
 
