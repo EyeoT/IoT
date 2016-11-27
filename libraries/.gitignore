@@ -1,0 +1,7 @@
+# Ignore everything
+*
+
+# Whitelist anything that's an EyeoT directory or gitignore
+ !/Adafruit_DotStar
+ !/EyeoT_Header_Files
+ !**.gitignore

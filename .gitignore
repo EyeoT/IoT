@@ -1,16 +1,25 @@
 # Ignore everything
-*/*
+*
 
-# even files
-*.*
+# Whitelist anything that's an EyeoT directory or gitignore
+!**.gitignore
+!/libraries/
+!/IoT/
+ 
 
-# Especially ignore all files named .DS_Store or ending with .log
-**/.DS_Store
-**.log
 
-# But not these directories...
-!.gitignore
-!README.md
-!IoT/*
-!libraries/Adafruit_DotStar/*
-!libraries/EyeoT_Header_Files/*
+
+
+
+
+libraries/readme.txt
+
+libraries/Adafruit_DotStar/examples/.DS_Store
+
+libraries/Adafruit_DotStar/.DS_Store
+
+libraries/.DS_Store
+
+IoT/.DS_Store
+
+IoT/Arduino_101_BLE_EyeoT/.DS_Store
