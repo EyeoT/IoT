@@ -1,15 +1,16 @@
 # Ignore everything
 /*
 
+# even if they are in subdirectories
+*/
+
+# Ignore all files named .DS_Store or ending with .log
+**/.DS_Store
+**.log
+
 # But not these directories...
 !.gitignore
 !README.md
 !IoT/*
 !libraries/Adafruit_DotStar/*
 !libraries/EyeoT_Header_Files/*
-
-
-# even if they are in subdirectories
-!*/
-
-
