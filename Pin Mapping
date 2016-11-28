@@ -1,0 +1,11 @@
+LED Strip:
+Green - Pin 2 (Data Pin)
+Yellow - Pin 4 (Clock Pin)
+Black - Ground
+Red - 5V
+
+Servo Motor:
+White - Pin A0 (Feedback)
+Yellow - Pin 9 (Data)
+Red - 5V
+Green - Ground
