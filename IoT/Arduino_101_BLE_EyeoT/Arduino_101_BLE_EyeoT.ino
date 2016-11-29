@@ -15,9 +15,11 @@ void setup() {
   blePeripheral.addAttribute(eyeoTService);
   blePeripheral.addAttribute(currentCommand);
   blePeripheral.addAttribute(currentResponse);
+  blePeripheral.addAttribute(currentState);
   
   currentCommand.setValue(0); // indicator lights off
   currentResponse.setValue(6); // not ready
+  currentState.setValue(0); //undefined state
 
   // advertise the service
   blePeripheral.begin();
@@ -33,6 +35,8 @@ void setup() {
 
   // get current switch state (update from undefined)
   lightSwitch = getState();
+  currentState.setValue(getState()); //needs testing
+  currentResponse.setValue(READY);
 }
 
 /*
@@ -66,6 +70,7 @@ bool serviceCommmand(unsigned short command)
           }
           delay(250); // save power for the servo motor
           lightSwitch = Move(ON);
+          currentState.setValue(Move(ON));
           DEBUG_PRINT("turn light switch on ");
           return (lightSwitch == ON) ? setLightColor(green): setLightColor(off);
       case SERVO_OFF: // move servo motor so light switch turns off
@@ -74,6 +79,7 @@ bool serviceCommmand(unsigned short command)
          }
          delay(250);
          lightSwitch = Move(OFF);
+         currentState.setValue(Move(OFF));
          DEBUG_PRINT("turn light switch off ");
          return (lightSwitch == OFF) ? setLightColor(red): setLightColor(off);
   
@@ -89,6 +95,7 @@ void loop(){
   BLECentral central = blePeripheral.central();
 
   // if a central is connected to peripheral:
+  currentState.setValue(getState());
   if (central) {
     DEBUG_PRINT("Connected to central: ");
     // print the central's MAC address:
@@ -103,15 +110,18 @@ void loop(){
         DEBUG_PRINTDEC(currentCommand.value());
         DEBUG_PRINTLN(" ");
         DEBUG_PRINT("Command ");       
-        if(serviceCommmand(currentCommand.value())){
+        if(serviceCommmand(currentCommand.value() - 48)){
           currentResponse.setValue(COMMAND_SUCCESS); // indicate that the command has been received
-          DEBUG_PRINTLN("executed successfully!");       
+          currentState.setValue(getState());
+          DEBUG_PRINTLN("executed successfully!");      
         }
         else{
           currentResponse.setValue(COMMAND_FAILURE); // indicate that the command failed
-          DEBUG_PRINTLN("ERROR: Command failed!");       
+          currentState.setValue(getState());
+          DEBUG_PRINTLN("ERROR: Command failed!");     
         }
         currentResponse.setValue(READY); // indicate that the Arduino is free to accept further commands
+        currentState.setValue(getState());
         DEBUG_PRINTLN("Arduino ready for future command(s)!");       
       }
     }
