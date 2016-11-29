@@ -2,7 +2,7 @@
 #include <Adafruit_DotStar.h> // DotStar LED light strip specific
 #include <Debug.h>            // for verbose debugging 
 
-#define NUMPIXELS 30 // Number of LEDs in strip (depends on what it's cut down to)
+#define NUMPIXELS 60 // Number of LEDs in strip (depends on what it's cut down to)
 #define TOTAL_NUMPIXELS 60
 
 //Control the LEDs from any two pins (bit-banged SPI):
