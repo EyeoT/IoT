@@ -15,12 +15,15 @@ const unsigned short COMMAND_ACK = 8;
 const unsigned short COMMAND_SUCCESS = 9;
 const unsigned short COMMAND_FAILURE = 10;
 
+//Device Function State
+const unsigned short UNDEFINED = 11;
+const unsigned short DEVICE_ON = 12;
+const unsigned short DEVICE_OFF = 13;
+
+
 BLEPeripheral blePeripheral; // create peripheral instance
 BLEService eyeoTService("19B10000-E8F2-537E-4F6C-D104768A1214"); // create service
 // create switch characteristic and allow remote device to read and write
 BLEUnsignedShortCharacteristic currentCommand("19B10001-E8F2-537E-4F6C-D104768A1214", BLERead | BLEWrite);
 BLEUnsignedShortCharacteristic currentResponse("19B10002-E8F2-537E-4F6C-D104768A1214", BLERead);
-
-
-
-
+BLEUnsignedShortCharacteristic currentState("19B10003-E8F2-537E-4F6C-D104768A1214", BLERead);
